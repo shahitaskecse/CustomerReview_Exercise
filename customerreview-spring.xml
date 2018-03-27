@@ -29,6 +29,17 @@
 	<alias alias="customerReviewDao" name="defaultCustomerReviewDao"/>
 	<bean id="defaultCustomerReviewDao" class="de.hybris.platform.customerreview.dao.impl.DefaultCustomerReviewDao" parent="abstractItemDao" scope="tenant"/>
 
+	<bean id="newCustomerReviewService" class="de.hybris.platform.customerreview.newcode.CustomerReviewServiceByCheck" parent="abstractBusinessService" scope="tenant">
+		<property name="customerReviewDao" ref="newCustomerReviewDao"/>
+		<property name="readFromConfig" ref="readFromConfig"/>
+	</bean>
+
+	<bean id="newCustomerReviewDao" class="de.hybris.platform.customerreview.newcode.NewCustomerReviewDao" parent="abstractItemDao" scope="tenant"/>
+
+	<bean id="newCustomerReviewDao" class="de.hybris.platform.customerreview.newcode.ReadFromConfig" scope="tenant">
+	<property name="property" value="CurseWords.properties"/>
+	</bean>
+
 	<!-- system setup bean -->
 	<alias alias="customerReviewSystemSetup" name="defaultCustomerReviewSystemSetup"/>
 	
